@@ -1,5 +1,13 @@
 ## getdata-016 Course Project
 
+## 0. Download and unzip data
+
+# First, load libraries that will be required during the execution of this code
+require(dplyr)
+require(reshape2)
+require(sqldf)
+require(tidyr)
+
 # Check to see if local directort exists, and if not create it
 if (!file.exists("~/datasciencecoursera/getdata-016")){
   dir.create("~/datasciencecoursera/getdata-016")
@@ -112,11 +120,11 @@ molten_set[grep("magnitude_mean|magnitude_standard", molten_set[, "variable"]), 
 molten_set$axis <- as.factor(molten_set$axis)
 
 # Get rid of the variable column and we have our tidy set (with some rearranging)
-tidy_set <- molten_set[, c(1, 2, 4, 5, 6, 7, 8, 3)]
+tidy_set <- molten_set[, c(1, 2, 5, 6, 7, 8, 9, 10, 4)]
 
 # Now create the summaries by each variable
 tidy_set <- tbl_df(tidy_set)
-tidy_set <- group_by(tidy_set, subject, activity, domain, component, sensor, transform, summary)
+tidy_set <- group_by(tidy_set, subject, activity, domain, component, sensor, transform, summary, axis)
 tidy_set <- summarise(tidy_set, mean(value))
 
 # Finally, output the table as a file
