@@ -27,5 +27,5 @@ I then removed the now-redundant variable column from the data set, leaving a se
 Finally, I created a tbl object and used the group_by and summarise functions to calculate the means of each of the values of the resulting 10,440 combinations of the variables (30 subjects * 6 activities * 2 domains * 2 components * 2 sensors * 3 transform options * 2 summary methods * 4 axis options = 34,560 possibilities, but some combinations do not occur).
 
 ## Grading
-The data file uploaded to the site is in a tab-delimited format.  You can read is using read.table("tidy_set") with the default options, assuming you have downloaded it to your current working directory.  This readme walks you through the processing performed on the file.  The code book contains the updated variable information.
+The data file uploaded to the site is in a tab-delimited format.  You can read is using tidy_set <- read.table("tidy_set.txt", sep = "\t", header = TRUE) with the default options, assuming you have downloaded it to your current working directory.  This readme walks you through the processing performed on the file.  The code book contains the updated variable information.
 Thanks for attention.
